@@ -10,9 +10,28 @@ const myBio = {
     originCountry: "Kenya", 
 
     aboutMe() { 
-        console.log(`My name is ${this.fullName} and I am ${this.age} years old. I am a ${this.career} and ${this.hobbies[2]} is my favorite activity.`)  // a function within an objects is a method
+        console.log(`My name is ${this.fullName} and I am ${this.age} years old. I am a ${this.career} and ${this.hobbies[2]} is my favorite activity.`)  // a function within an objects is a method.
     }
 }
+
+const studentDetails = {
+    firstName: "Jennifer", 
+    lastName: "Potter",
+    unitsStudied: ["Biology", "Physics", "Linear Algebra"], 
+    sportProfile: { 
+        sport: "football", 
+        position: "goalkeeper",
+        team: "Wonderers",
+        number: 9
+    }, 
+    country: "Kenya",
+
+    studentProfile() {
+        console.log(`${this.firstName} ${this.lastName} is from ${this.country} and plays ${this.sportProfile.sport}.`);
+    }
+}
+
+console.log(studentDetails.studentProfile());
  
         // objects can also contain  other objects as properties 
 console.log(myBio.fullName);
@@ -56,7 +75,7 @@ console.log(myBio1); // with the spread operator, a change in the value of myBio
 
 // using the object.assign method - works the same way as the spread operator 
 
-let object2 = Object.assign({}, myBio);
+let object2 = Object.assign({}, myBio); // the essence of the empty curly brackets 
 console.log(object2);
 
 console.log(object2 === myBio);
@@ -72,7 +91,7 @@ let person1 = {
 
 console.log(person1);
 
-let person2 = {...person1};
+let person2 = {...person1}; // using the spread operator to assign a variable value 
 console.log(person2);
 person2.name = "Caleb";
 
@@ -107,6 +126,15 @@ while (count <=10) {
 }
 
 console.log(total);
+
+
+let summation = 0, countSpace = 1;
+while (countSpace <=12) {
+    summation += countSpace;
+    countSpace += 1;
+}
+
+console.log(summation)
 
 // using if else statement to compute factorials 
 function factorial(m) { 
@@ -151,4 +179,12 @@ console.log(null || undefined);
 
 console.log(NaN && null);
 
-console.loh(Math.max())
+console.log(Math.max(4, 7)); // takes the value of the larger number of the two
+
+console.log(Math.min (2, 4)); // displays the minimum of the two numbers. Additional mathematical operators can be carried out after the evaluation.
+
+console.log(Math.max(45, 7) - 40);
+
+
+
+// JAVASCRIPT DOM 
