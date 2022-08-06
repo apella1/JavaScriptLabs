@@ -188,3 +188,61 @@ console.log(Math.max(45, 7) - 40);
 
 
 // JAVASCRIPT DOM 
+
+// DOM manipulation 
+ 
+
+const project = document.getElementById("projects");
+console.log(project);
+
+
+
+const navigation = document.getElementsByClassName("navbar");
+console.log(navigation);
+
+const navItems = document.getElementsByClassName("navbar-item");
+console.log(navItems);
+
+
+const lists = document.getElementsByTagName("li"); 
+
+// looping through the lists to apply inline styling to each list element 
+
+for (let i = 0; i < lists.length; i++) { 
+    lists[i].style.color = "red";
+}
+console.log(lists);
+
+const tags = document.getElementsByTagName("nav");
+console.log(tags);
+
+
+document.getElementsByName("");
+
+
+const container = document.querySelector("div"); // selects the first item that matches the destination given. In this case it selects the first div element within the document model.
+console.log(container);
+
+const allDivs = document.querySelectorAll("div"); // selects all the items with the described name 
+console.log(allDivs);
+
+// changing the styling of the elements within js 
+
+const myTitle = document.querySelectorAll(".my-title");
+console.log(myTitle);
+
+myTitle.style.color = "blue"; // inline styling. in JavaScript the css properties are written in camel case as opposed to the kebab case in css styling. For example text-transform becomes textTransform
+myTitle.style.textTransform = "capitalize";
+
+console.log(myTitle); 
+
+// inline styling of the elements doesn't happen for multiple elements. for that to be done the list elements have to be looped and the styles applied to every individual function
+
+
+
+// creating elements 
+
+const ul = document.querySelectorAll("ul");
+const li = document.createElement("li");
+
+console.log(ul);
