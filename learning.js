@@ -181,7 +181,7 @@ console.log(NaN && null);
 
 console.log(Math.max(4, 7)); // takes the value of the larger number of the two
 
-console.log(Math.min (2, 4)); // displays the minimum of the two numbers. Additional mathematical operators can be carried out after the evaluation.
+console.log(Math.min (2, 4) - 4 ); // displays the minimum of the two numbers. Additional mathematical operators can be carried out after the evaluation.
 
 console.log(Math.max(45, 7) - 40);
 
@@ -213,12 +213,13 @@ for (let i = 0; i < lists.length; i++) {
 }
 console.log(lists);
 
+// what is the difference between ++i and i++ 
+
 const tags = document.getElementsByTagName("nav");
 console.log(tags);
 
 
-document.getElementsByName("");
-
+document.getElementsByName("");  // what are element names?
 
 const container = document.querySelector("div"); // selects the first item that matches the destination given. In this case it selects the first div element within the document model.
 console.log(container);
@@ -243,6 +244,40 @@ console.log(myTitle);
 // creating elements 
 
 const ul = document.querySelectorAll("ul");
-const li = document.createElement("li");
+const li = document.createElement("li"); 
+li.textContent = "Hello World"; // textContent is used to add text to the element.
+ul[0].appendChild(li); // appends the li element to the ul element.
+
 
 console.log(ul);
+
+// how to add inline styling in javascript
+const myList = document.querySelectorAll("li");
+myList.style.color = "red";
+myList.style.textTransform = "uppercase";
+
+// looping through the list elements to apply inline styling to each list element
+for (let i = 0; i < myList.length; i++) {
+    myList[i].style.color = "red";
+    myList[i].style.textTransform = "uppercase";
+}
+
+// adding a class to the list elements
+for (let i = 0; i < myList.length; i++) {
+    myList[i].classList.add("my-list");
+}
+
+// using while loop through the list elements to apply inline styling to each list element
+let i = 0;
+while (i < myList.length) {
+    myList[i].style.color = "red";
+    myList[i].style.textTransform = "uppercase";
+    i++;
+}
+
+
+// control flow - conditional execution 
+
+let numSqrt = Number(prompt("Pick a number"));
+console.log(`The square root of the number you've picked is ${numSqrt * 0.5}`); // how to write exponential in js.
+

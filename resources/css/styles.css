@@ -3,3 +3,5 @@ body::before {
     content: "";
     height: 70px;
 }
+
+/* How do we style the accordion in plain css */
