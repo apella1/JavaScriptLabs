@@ -32,6 +32,16 @@ const studentDetails = {
 }
 
 console.log(studentDetails.studentProfile());
+
+const studentInformation = {...studentDetails};
+
+studentInformation.firstName = "Peters";
+
+studentInformation.unitsStudied[0] = "Chemistry"; // changing of a deeply nested element affects the initial element the copy was made from. The method used in this case is the use of spread operator.
+
+console.log(studentInformation);
+
+console.log(studentDetails);
  
         // objects can also contain  other objects as properties 
 console.log(myBio.fullName);
@@ -48,7 +58,7 @@ myBio["summary"] = `This object has ${myBio.hobbies.length} hobbies`  // using t
 
 console.log(myBio);
 
-object1 = {};
+object1 = {}; 
 object1["player names"] = ["Joey", "Winnie", "Vic", "Sim", "Grace", "Muya"];
 console.log(object1);
 
@@ -65,6 +75,37 @@ function Games(gameName, yearPublished, brandAmbassador) {
 
 const game1 = new Games ("Football", 1467, "John Apella");
 console.log(game1.summary());  // making sure to indicate the additional double brackets for the function 
+
+// object constructors using functions further examples 
+
+function Candidates (candidateName, position, age, politicalParty) { 
+    this.candidateName = candidateName;
+    this.position = position;
+    this.age = age;
+    this.politicalParty = politicalParty;
+
+    this.fullInformation = function () { 
+        console.log(`${this.candidateName} is vying as a ${this.position} from ${this.politicalParty} and is ${this.age} years old.`);
+    }
+}
+
+
+const candidate1 = new Candidates ("Mike Ohuru", "president", 24, "Uzalendo");
+
+console.log(candidate1.fullInformation());
+
+
+// creating a copy of a function object literal using the spread operator 
+
+const myCandidate = {...candidate1};
+
+console.log(myCandidate);
+
+// creating a copy of myCandidate using the assign operator 
+
+const preferredCandidate = Object.assign({}, myCandidate);
+
+console.log(preferredCandidate);
 
 // Creating object copies using the spread operator, represented by three dots 
 
@@ -127,6 +168,11 @@ while (count <=10) {
 
 console.log(total);
 
+// iterating over the first ten numbers from 1
+for (let j = 1; j <=10; j++) {
+    console.log(j);
+}
+
 
 let summation = 0, countSpace = 1;
 while (countSpace <=12) {
@@ -152,6 +198,10 @@ console.log(factorial(4));
 // escaping characters 
 console.log("This is a line of text \nThis, however is another line of text written on a new line."); // the escaping character is a forward slash, not to be confused with the backward slash which is the division operator 
 console.log("David said, \"How are you doing today?\".");
+
+// escaping characters further practice 
+
+console.log("\"Our vanity, our self love, promotes the cult of the genius.\"\n~ Friedrich Nietzsche.");
 // when using backticks to represent a block of quote, ${} is referred to as the template literal
 
 console.log(typeof factorial); // typeof is referred to as a unary operator. The other operators are binary and ternary (? :)
@@ -168,14 +218,18 @@ console.log(NaN - 788897); // NaN
 console.log(null == undefined); // yields true. using strict comparison yields false. null == 0 yields false 
 console.log(false === 0); // the normal equality sign yields true 
 
-// short circuiting of logical operators - 0, NaN and empty strings count as false. This is used in order to be able to fall back to default values. When the value to the left has a possibility of returning a null value an alternative is given to the right. 
+// short circuiting of logical operators - 0, NaN and empty strings count as false. 
+// This is used in order to be able to fall back to default values.
+//  When the value to the left has a possibility of returning a null value an alternative is given to the right. 
 
 console.log(null || "Agnes");
 console.log("Peter" || "John");
 console.log(null || undefined);
 
-// && works the opposite way to the || operator. If the value to its left is false it returns that value, otherwise it returns the value to the right. 
-// for both && and || the value to the right is only evaluated if necessary. The process of both && and || is known as short circuit evaluation. 
+// && works the opposite way to the || operator.
+// If the value to its left is false it returns that value, otherwise it returns the value to the right. 
+// For both && and || the value to the right is only evaluated if necessary. 
+// The process of both && and || is known as short circuit evaluation. 
 
 console.log(NaN && null);
 
@@ -190,7 +244,8 @@ console.log(Math.max(45, 7) - 40);
 // JAVASCRIPT DOM 
 
 // DOM manipulation 
- 
+// Using the document module to select the elements within the document object model and manipulate them as necessary. 
+// The selection values are assigned to a variable which are then further used to manipulate the model.
 
 const project = document.getElementById("projects");
 console.log(project);
@@ -207,11 +262,12 @@ console.log(navItems);
 const lists = document.getElementsByTagName("li"); 
 
 // looping through the lists to apply inline styling to each list element 
+// how to style the elements within javascript 
 
-for (let i = 0; i < lists.length; i++) { 
-    lists[i].style.color = "red";
-}
-console.log(lists);
+// for (let i = 0; i < lists.length; i++) { 
+//     lists[i].style.color = "red";
+// }
+// console.log(lists);
 
 // what is the difference between ++i and i++ 
 
@@ -232,9 +288,9 @@ console.log(allDivs);
 const myTitle = document.querySelectorAll(".my-title");
 console.log(myTitle);
 
-myTitle.style.color = "blue"; // inline styling. in JavaScript the css properties are written in camel case as opposed to the kebab case in css styling. For example text-transform becomes textTransform
-myTitle.style.textTransform = "capitalize";
-
+// myTitle.style.color = "blue"; // inline styling. in JavaScript the css properties are written in camel case as opposed to the kebab case in css styling. For example text-transform becomes textTransform
+// myTitle.style.textTransform = "capitalize";
+// the commented out code is not running to change the inline styling of the html elements selected and assigned to the named variables. 
 console.log(myTitle); 
 
 // inline styling of the elements doesn't happen for multiple elements. for that to be done the list elements have to be looped and the styles applied to every individual function
@@ -252,32 +308,33 @@ ul[0].appendChild(li); // appends the li element to the ul element.
 console.log(ul);
 
 // how to add inline styling in javascript
-const myList = document.querySelectorAll("li");
-myList.style.color = "red";
-myList.style.textTransform = "uppercase";
+// const myList = document.querySelectorAll("li");
+// myList.style.color = "red";
+// myList.style.textTransform = "uppercase";
+// there's still the issues where the code specified within the javascript file is not executed to change the styling of the selected html elements 
 
 // looping through the list elements to apply inline styling to each list element
-for (let i = 0; i < myList.length; i++) {
-    myList[i].style.color = "red";
-    myList[i].style.textTransform = "uppercase";
-}
+// for (let i = 0; i < myList.length; i++) {
+//     myList[i].style.color = "red";
+//     myList[i].style.textTransform = "uppercase";
+// }
 
 // adding a class to the list elements
-for (let i = 0; i < myList.length; i++) {
-    myList[i].classList.add("my-list");
-}
+// for (let i = 0; i < myList.length; i++) {
+//     myList[i].classList.add("my-list");
+// }
 
 // using while loop through the list elements to apply inline styling to each list element
-let i = 0;
-while (i < myList.length) {
-    myList[i].style.color = "red";
-    myList[i].style.textTransform = "uppercase";
-    i++;
-}
+// let i = 0;
+// while (i < myList.length) {
+//     myList[i].style.color = "red";
+//     myList[i].style.textTransform = "uppercase";
+//     i++;
+// }
 
 
 // control flow - conditional execution 
 
-let numSqrt = Number(prompt("Pick a number"));
-console.log(`The square root of the number you've picked is ${numSqrt * 0.5}`); // how to write exponential in js.
+let numSqrt = Number(prompt("Pick a number")); // the prompt appears as an alert message prompting to enter a number
+console.log(`Half the number you've picked is ${numSqrt * 0.5}`); // how to write exponential in js.
 
